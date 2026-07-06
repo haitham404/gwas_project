@@ -1,0 +1,29 @@
+# R
+.Rhistory
+.RData
+.Rproj.user/
+
+# Logs
+*.log
+
+# Temporary
+*.tmp
+*.bak
+
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS/Linux
+.DS_Store
+Thumbs.db
+
+# Generated html dependencies
+plots/*_files/
+
+# Temporary PDFs
+scripts/*.pdf
+
