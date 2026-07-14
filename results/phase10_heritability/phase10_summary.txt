@@ -1,0 +1,11 @@
+Phase 10: Heritability Estimation
+
+Sample size: 156
+
+A simulated phenotype was used only to validate
+the reusable heritability estimation function.
+
+The estimated h2 is not biologically interpreted.
+
+The function will be reused with real metabolite
+phenotypes in Phase 11.

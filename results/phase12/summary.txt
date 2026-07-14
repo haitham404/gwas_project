@@ -1,0 +1,33 @@
+Phase 12: Metabolite–Diabetes Phenotype Association
+
+The objective of Phase 12 was to identify metabolites significantly associated with diabetes status before performing SNP-level mixed-model GWAS.
+
+The quality-controlled metabolite data from Phase 11 were used. The dataset contained 156 samples and 136 metabolites. There were 58 non-diabetic and 98 diabetic individuals.
+
+Sample IDs were matched with the PCA data using the metabolite mapping file. Sex information was obtained from the PLINK FAM file. All 156 samples were successfully matched with PCA and sex information.
+
+First, an exploratory bar plot was generated to compare mean metabolite levels between diabetic and non-diabetic individuals. The bars represent the mean standardized metabolite level and the error bars represent the standard error (SE).
+
+Next, a linear regression model was fitted for each metabolite. Diabetes status was the main predictor, while sex and the first three principal components (PC1, PC2, and PC3) were included as covariates.
+
+The model was:
+
+Metabolite = Diabetes + Sex + PC1 + PC2 + PC3
+
+The Beta coefficient represents the estimated effect of diabetes on the metabolite level. A negative Beta indicates lower metabolite levels in diabetic individuals, while a positive Beta indicates higher levels.
+
+For each metabolite, the Beta, standard error, and p-value were calculated.
+
+A total of 136 metabolites were tested. Bonferroni correction was applied to control for multiple testing.
+
+The Bonferroni significance threshold was:
+
+0.05 / 136 = 0.0003676471
+
+Metabolites with a p-value below this threshold were considered statistically significant.
+
+A total of 35 metabolites were significantly associated with diabetes after Bonferroni correction.
+
+A volcano plot was generated to summarize all metabolite–diabetes associations. Each point represents one metabolite. The x-axis represents the diabetes effect size (Beta), and the y-axis represents -log10(p-value). Higher points indicate stronger statistical evidence. Metabolites above the Bonferroni threshold were considered significant.
+
+The 35 significant metabolites were saved for downstream SNP-level mixed-model GWAS. Therefore, only diabetes-associated metabolites will be analyzed in the next genetic association step instead of testing all 136 metabolites.

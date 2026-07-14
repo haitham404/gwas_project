@@ -1,0 +1,25 @@
+Phase 11: Metabolite Data Quality Control Summary
+
+The metabolomics dataset initially contained 156 samples and 136 metabolites. Metabolite-level missingness was assessed, and metabolites with more than 20% missing values were designated for removal. No metabolites exceeded this threshold.
+
+Sample-level missingness was subsequently calculated across the remaining metabolites. Samples with more than 20% missing metabolite values were designated for exclusion. No samples exceeded the sample missingness threshold.
+
+Metabolites with zero or near-zero variance (variance ≤ 1 × 10⁻⁸) were assessed and excluded as uninformative features. No metabolites met this exclusion criterion.
+
+The QC-passed metabolite values were standardized using z-score scaling to produce features with a mean of approximately zero and a standard deviation of one. This ensures comparability between metabolites measured on different scales.
+
+After quality control, the final dataset retained all 156 samples and 136 metabolites.
+
+QC thresholds:
+
+* Metabolite missingness: >20%
+* Sample missingness: >20%
+* Near-zero variance: ≤1 × 10⁻⁸
+* Normalization: z-score standardization
+
+Final QC dataset:
+
+* Samples before QC: 156
+* Samples after QC: 156
+* Metabolites before QC: 136
+* Metabolites after QC: 136

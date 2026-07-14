@@ -1,6 +1,4 @@
-# =========================================================
-# Phase 6 - GWAS Annotation + TRUE Manhattan (ggplot)
-# =========================================================
+# GWAS Annotation + TRUE Manhattan (ggplot)
 
 library(biomaRt)
 library(dplyr)
@@ -9,9 +7,6 @@ library(ggrepel)
 
 options(scipen = 999)
 
-# ---------------------------------------------------------
-# STEP 0: Correct paths (FIXED for your tree)
-# ---------------------------------------------------------
 pc1 <- read.table("../phase4_population_gwas/assoc_pc1.PC1.glm.linear",
                    header = TRUE, comment.char = "")
 
@@ -53,9 +48,7 @@ pc1 <- rename_cols(pc1)
 pc2 <- rename_cols(pc2)
 sex <- rename_cols(sex)
 
-# ---------------------------------------------------------
-# STEP 2: Fix chromosome encoding
-# ---------------------------------------------------------
+# Fix chromosome encoding
 fix_chr <- function(df) {
 
   df$CHR <- as.character(df$CHR)
@@ -74,9 +67,7 @@ pc1 <- fix_chr(pc1)
 pc2 <- fix_chr(pc2)
 sex <- fix_chr(sex)
 
-# ---------------------------------------------------------
-# STEP 3: Clean GWAS data
-# ---------------------------------------------------------
+#  Clean GWAS data
 clean_gwas <- function(df) {
   df <- df[!is.na(df$P), ]
   df <- df[is.finite(df$P), ]
@@ -87,9 +78,7 @@ pc1 <- clean_gwas(pc1)
 pc2 <- clean_gwas(pc2)
 sex <- clean_gwas(sex)
 
-# ---------------------------------------------------------
-# STEP 4: Select significant SNPs
-# ---------------------------------------------------------
+#  Select significant SNPs
 threshold <- 1e-5
 
 pc1_top <- subset(pc1, P < threshold)
@@ -104,9 +93,7 @@ top_snps <- unique(c(
 
 cat("Selected SNPs:", length(top_snps), "\n")
 
-# ---------------------------------------------------------
-# STEP 5: Gene annotation (biomaRt FIXED)
-# ---------------------------------------------------------
+#  Gene annotation (biomaRt FIXED)
 mart <- useEnsembl(
   biomart = "snp",
   dataset = "hsapiens_snp",
@@ -128,16 +115,12 @@ gene_info <- getBM(
 
 colnames(gene_info) <- c("SNP", "CHR", "BP", "GENE", "CONSEQUENCE")
 
-# ---------------------------------------------------------
-# STEP 6: Save results (FIXED PATH)
-# ---------------------------------------------------------
+
 write.csv(
   gene_info,
   "../../results/phase6_annotation/phase6_annotated_snps.csv",
   row.names = FALSE
 )
 
-# ---------------------------------------------------------
-# DONE
-# ---------------------------------------------------------
+
 cat("Phase 6 completed successfully\n")
