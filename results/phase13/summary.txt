@@ -1,0 +1,16 @@
+## Phase 13 Results
+
+The performance of Logistic Regression and Random Forest was compared using Accuracy, Sensitivity, Specificity, Balanced Accuracy, and AUC.
+
+| Model               | Accuracy | Sensitivity | Specificity | Balanced Accuracy |   AUC |
+| ------------------- | -------: | ----------: | ----------: | ----------------: | ----: |
+| Logistic Regression |    0.531 |       0.550 |       0.500 |             0.525 | 0.525 |
+| Random Forest       |    0.969 |       1.000 |       0.917 |             0.958 | 1.000 |
+
+Random Forest substantially outperformed Logistic Regression across all evaluation metrics. Logistic Regression showed weak classification performance and produced convergence and rank-deficiency warnings, indicating model instability due to the large number of predictors relative to the available sample size.
+
+In contrast, Random Forest correctly identified all diabetic individuals and misclassified only one non-diabetic individual. The model achieved an accuracy of 96.9%, a balanced accuracy of 95.8%, and an AUC of 1.000.
+
+Feature importance analysis identified 1,5-anhydroglucitol and mannose as the strongest predictors. Citrulline, enyl-palmitoyl-GPC, palmitoylcholine, gluconate, and glucose were also among the most important features.
+
+Overall, Random Forest was the best-performing classification model. However, the near-perfect performance should be interpreted cautiously and validated using cross-validation or an independent dataset to assess model generalizability.
